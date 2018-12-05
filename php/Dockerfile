@@ -15,6 +15,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 #apt-get
 RUN apt-get update && apt-get install -y \
      wget \
+     inetutils-ping \
      libfreetype6-dev \
      libjpeg62-turbo-dev \
      libmcrypt-dev \
