@@ -40,19 +40,21 @@ RUN tar -zxvf /tmp/xdebug-2.6.1.tgz  -C /tmp/ \
 RUN cd /tmp/xdebug-2.6.1 \
      && phpize \
      && ./configure --with-php-config=php-config \
-     && make && make install
+     && make -j$(nproc) \
+     && make install
 
 
 RUN cd /tmp/yaf-3.0.7  \
     && phpize \
     &&  ./configure --with-php-config=php-config \
-    && make && make install
+    && make -j$(nproc) \
+    && make install
 
 
 RUN cd /tmp/mongodb-1.5.3 \
     && phpize \
     &&  ./configure --with-php-config=php-config \
-    && make  \
+    && make  -j$(nproc) \
     && make install \
     && echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/mongodb.ini
 
