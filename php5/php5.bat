@@ -1,8 +1,6 @@
 
 
-docker run -p 9000:9000 --name  php-fpm  -v D:/web:/var/www/html -v D:/docker/php7/etc:/usr/local/etc  -d php:7.2.5-fpm --link mysql5.7:mysql5.7
-
-docker run -p 9000:9000 --name  php-fpm  -v D:/web:/var/www/html -v D:/docker/php7/etc:/usr/local/etc  -d xwx/php-fpm:7.2.5
+docker run -p 9009:9000 --name  php5  -v D:/web:/var/www/html -v D:/docker/php5/etc:/usr/local/etc  -d  php:5-fpm
 
 命令说明:
 
@@ -19,10 +17,10 @@ docker run -p 9000:9000 --name  php-fpm  -v D:/web:/var/www/html -v D:/docker/ph
 
 
 安装gd会遇到问题
-apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng-dev 
+apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng-dev
 
 安装扩展方法
 docker-php-ext-configure gd  --with-freetype-dir=/usr/include/freetype2 --with-png-dir=/usr/include --with-jpeg-dir=/usr/include
-docker-php-ext-install gd 
+docker-php-ext-install gd
 
 
