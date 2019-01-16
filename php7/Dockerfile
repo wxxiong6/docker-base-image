@@ -35,6 +35,8 @@ RUN apt-get update && apt-get install -y \
 COPY resources/xdebug-2.6.1.tgz /tmp/
 COPY resources/yaf-3.0.7.tgz /tmp/
 COPY resources/mongodb-1.5.3.tgz /tmp/
+COPY resources/ImageMagick-6.9.10-23.tar.gz /tmp/
+COPY resources/imagick-3.4.3.tgz /tmp/
 
 
 RUN tar -zxf /tmp/xdebug-2.6.1.tgz  -C /tmp/ \
@@ -60,9 +62,23 @@ RUN tar -zxf /tmp/xdebug-2.6.1.tgz  -C /tmp/ \
     && make  -j$(nproc) \
     && make install \
     && echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/mongodb.ini \
-    && rm -rf /tmp/mongodb-1.5.3  /tmp/mongodb-1.5.3.tgz
-
-
+    && rm -rf /tmp/mongodb-1.5.3  /tmp/mongodb-1.5.3.tgz \
+    \
+    && tar -zxvf ImageMagick-6.9.10-23.tar.gz -C /tmp/ \
+    && cd /tmp/ImageMagick-6.9.10-23 \
+    && ./configure \
+    && make  -j$(nproc) \
+    && make install \
+    && rm -rf /tmp/ImageMagick-6.9.10-23  /tmp/ImageMagick-6.9.10-23.tar.gz \
+    \
+    && tar -zxvf  /tmp/imagick-3.4.3.tgz -C /tmp/ \
+    && cd /tmp/imagick-3.4.3 \
+    && phpize \
+    &&  ./configure --with-php-config=php-config \
+    && make  -j$(nproc) \
+    && make install \
+    && echo "extension=imagick.so" > /usr/local/etc/php/conf.d/imagick.ini \
+    && rm -rf /tmp/imagick-3.4.3  /tmp/imagick-3.4.3.tgz
 
 COPY resources/php7/etc/php/php.ini  /usr/local/etc/php/
 COPY resources/php7/etc/php/conf.d/php-ext-xdebug.ini /usr/local/etc/php/conf.d
