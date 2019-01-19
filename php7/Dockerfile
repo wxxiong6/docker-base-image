@@ -15,7 +15,7 @@ LABEL version="1.0"
 LABEL description="php-fpm:7.2.5"
 
 #apt-get
-RUN apt-get install -y \
+RUN apt-get update  && apt-get install -y \
      wget \
      inetutils-ping \
      libfreetype6-dev \
@@ -61,7 +61,7 @@ RUN tar -zxf /tmp/xdebug-2.6.1.tgz  -C /tmp/ \
     &&  ./configure --with-php-config=php-config \
     && make  -j$(nproc) \
     && make install \
-    && echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/mongodb.ini \
+    && echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/php-ext-mongodb.ini \
     && rm -rf /tmp/mongodb-1.5.3  /tmp/mongodb-1.5.3.tgz \
     \
     && tar -zxvf ImageMagick-6.9.10-23.tar.gz -C /tmp/ \
@@ -77,12 +77,14 @@ RUN tar -zxf /tmp/xdebug-2.6.1.tgz  -C /tmp/ \
     &&  ./configure --with-php-config=php-config \
     && make  -j$(nproc) \
     && make install \
-    && echo "extension=imagick.so" > /usr/local/etc/php/conf.d/imagick.ini \
+    && echo "extension=imagick.so" > /usr/local/etc/php/conf.d/php-ext-imagick.ini \
     && rm -rf /tmp/imagick-3.4.3  /tmp/imagick-3.4.3.tgz
 
 COPY resources/php7/etc/php/php.ini  /usr/local/etc/php/
 COPY resources/php7/etc/php/conf.d/php-ext-xdebug.ini /usr/local/etc/php/conf.d
 COPY resources/php7/etc/php/conf.d/php-ext-yaf.ini /usr/local/etc/php/conf.d
+
+
 
 
 
