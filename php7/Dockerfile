@@ -22,11 +22,14 @@ RUN apt-get install -y \
      libjpeg62-turbo-dev \
      libmcrypt-dev \
      libpng-dev \
+     libxml2-dev \
+     libtidy-dev \
+     libxslt1-dev \
      \
      && rm -rf /var/cache/apt \
      && docker-php-ext-configure gd  --with-freetype-dir=/usr/include/freetype2 --with-png-dir=/usr/include --with-jpeg-dir=/usr/include \
-     && docker-php-ext-install  -j$(nproc) gd  pdo_mysql sockets\
-     && docker-php-ext-enable gd  pdo_mysql sockets
+     && docker-php-ext-install  -j$(nproc) gd  pdo_mysql sockets soap\
+     && docker-php-ext-enable gd  pdo_mysql sockets soap
 
 
 
