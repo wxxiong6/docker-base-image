@@ -1,7 +1,7 @@
 #
 # Dockerfile for building PHP7 images
 # php-ext
-# xdebug、gd、mongodb、yaf、pdo_mysql
+# xdebug、gd、mongodb、yaf、pdo_mysql、yar
 #
 #
 
@@ -29,8 +29,8 @@ RUN apt-get update  && apt-get install -y \
      \
      && rm -rf /var/cache/apt \
      && docker-php-ext-configure gd  --with-freetype-dir=/usr/include/freetype2 --with-png-dir=/usr/include --with-jpeg-dir=/usr/include \
-     && docker-php-ext-install  -j$(nproc) gd  pdo_mysql sockets soap\
-     && docker-php-ext-enable gd  pdo_mysql sockets soap
+     && docker-php-ext-install  -j$(nproc) gd  pdo_mysql sockets soap bcmath \
+     && docker-php-ext-enable gd  pdo_mysql sockets soap bcmath
 
 
 
@@ -96,10 +96,3 @@ RUN tar -zxf /tmp/xdebug-2.6.1.tgz  -C /tmp/ \
 COPY resources/php7/etc/php/php.ini  /usr/local/etc/php/
 COPY resources/php7/etc/php/conf.d/php-ext-xdebug.ini /usr/local/etc/php/conf.d
 COPY resources/php7/etc/php/conf.d/php-ext-yaf.ini /usr/local/etc/php/conf.d
-
-
-
-
-
-
-
