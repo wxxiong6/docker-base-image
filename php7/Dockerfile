@@ -17,6 +17,8 @@ LABEL description="php-fpm:7.2.5"
 #apt-get
 RUN apt-get update  && apt-get install -y \
      wget \
+     procps \
+     vim \
      inetutils-ping \
      libfreetype6-dev \
      libjpeg62-turbo-dev \
@@ -35,7 +37,7 @@ RUN apt-get update  && apt-get install -y \
 
 
 
-#将预先下载好的拓展包从宿主机拷贝进去
+#将预先下载好的扩展包从宿主机拷贝进去
 COPY resources/xdebug-2.6.1.tgz /tmp/
 COPY resources/yaf-3.0.7.tgz /tmp/
 COPY resources/mongodb-1.5.3.tgz /tmp/
@@ -69,7 +71,7 @@ RUN tar -zxf /tmp/xdebug-2.6.1.tgz  -C /tmp/ \
     && echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/php-ext-mongodb.ini \
     && rm -rf /tmp/mongodb-1.5.3  /tmp/mongodb-1.5.3.tgz \
     \
-    && tar -zxvf ImageMagick-6.9.10-23.tar.gz -C /tmp/ \
+    && tar -zxvf /tmp/ImageMagick-6.9.10-23.tar.gz -C /tmp/ \
     && cd /tmp/ImageMagick-6.9.10-23 \
     && ./configure \
     && make  -j$(nproc) \
@@ -83,7 +85,7 @@ RUN tar -zxf /tmp/xdebug-2.6.1.tgz  -C /tmp/ \
     && make  -j$(nproc) \
     && make install \
     && echo "extension=imagick.so" > /usr/local/etc/php/conf.d/php-ext-imagick.ini \
-    && rm -rf /tmp/imagick-3.4.3  /tmp/imagick-3.4.3.tgz
+    && rm -rf /tmp/imagick-3.4.3  /tmp/imagick-3.4.3.tgz \
     \
     && tar -zxf  /tmp/yar-2.0.5.tgz -C /tmp/ \
     && cd /tmp/yar-2.0.5  \
