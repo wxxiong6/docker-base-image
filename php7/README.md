@@ -1,6 +1,6 @@
 ## php7.2 安装
 
-build php镜像
+构建镜像
 
 ```shell
 ./build.sh
