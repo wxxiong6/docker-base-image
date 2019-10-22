@@ -1,39 +1,39 @@
-@echo off
+@echo off 
+title php install
 
-set nginx_web_dir="D:/web"
-set docker_php_dir="D:/docker/php7"
+set nginx_web_dir=D:/web
+set docker_php_dir=D:/docker/php7
 set docker_name="xwx/php-fpm:7.2.5"
 
 
-
-nginx_web_dir="/var/www/html"
-docker_php_dir="/docker/php7/"
-docker_name="xwx/php-fpm:7.2.5"
-
-if  exist %nginx_web_dir% (
-) else (
+if  not exist %nginx_web_dir% (
     rem  %nginx_web_dir%
     md  %nginx_web_dir%
 )
 
-if  exist %docker_php_dir% (
-) else (
+if not  exist %docker_php_dir% (
     rem  %docker_php_dir%
     md  %docker_php_dir%
 )
 
 
-cp -rf ./resources/php7/etc/* ${docker_php_dir}/etc/
+xcopy "./resources/php7/etc" "%docker_php_dir%/etc"  /e /h /d /y
 
-old_docker_name=`docker ps -a|findstr php-fpm|awk '{print $1}'`
-if [ -n "$old_docker_name" ]; then
-    rm_res=`docker stop ${old_docker_name} && docker rm ${old_docker_name}`
-    echo "删除之前安装php-fpm容器:${old_docker_name},${rm_res}"
-fi
-docker run -p 9000:9000 --name  php-fpm  -v %nginx_web_dir%:/var/www/html -v %docker_php_dir%etc:/usr/local/etc  -d %docker_name%
-#if [ -n "$res" ]; then
-#    echo "install success [$res]"
-#else
-#    echo "install failure"
-#fi
+set used=false
+for /F "usebackq tokens=1" %%i in (`"docker ps -a|find "php-fpm""`) do (
+    set old_docker_name=%%i
+    set used=true
+)
 
+ if "%used%"=="true" (
+	docker stop %old_docker_name%
+	docker rm %old_docker_name%
+)
+
+docker run -p 9000:9000 --name  php-fpm  -v %nginx_web_dir%:/var/www/html -v %docker_php_dir%/etc:/usr/local/etc  -d %docker_name%
+if %ERRORLEVEL% == 0 (
+   echo install success
+) ELSE (
+   echo install failure
+)
+pause
