@@ -103,3 +103,9 @@ RUN apt-get update  && apt-get install -y \
 COPY resources/php7/etc/php/php.ini  /usr/local/etc/php/
 COPY resources/php7/etc/php/conf.d/php-ext-xdebug.ini /usr/local/etc/php/conf.d
 COPY resources/php7/etc/php/conf.d/php-ext-yaf.ini /usr/local/etc/php/conf.d
+
+#Composer
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
+    php composer-setup.php && \
+    php -r "unlink('composer-setup.php');" && \
+    mv composer.phar /usr/local/bin/composer
