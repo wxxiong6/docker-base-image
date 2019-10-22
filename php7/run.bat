@@ -7,15 +7,15 @@ set docker_name="xwx/php-fpm:7.2.5"
 
 
 if  not exist %nginx_web_dir% (
-    rem  %nginx_web_dir%
     md  %nginx_web_dir%
 )
 
 if not  exist %docker_php_dir% (
-    rem  %docker_php_dir%
     md  %docker_php_dir%
 )
-
+if not  exist %docker_php_dir%/etc (
+    md  %docker_php_dir%/etc
+)
 
 xcopy "./resources/php7/etc" "%docker_php_dir%/etc"  /e /h /d /y
 
