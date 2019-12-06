@@ -1,1 +1,0 @@
-docker build . -t xwx/php-fpm:7.2.5
