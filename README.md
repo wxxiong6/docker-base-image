@@ -1,8 +1,13 @@
 #  Docker image
 
-包含 nginx、php7.2、php5、mysql、redis、rabbitMQ 镜像 ，整理出这些常用的环境，方便统一环境及重新装机方便。
+- [nginx](https://github.com/wxxiong6/docker-lnmp/blob/master/nginx/README.md) 
+- [php7.2](https://github.com/wxxiong6/docker-lnmp/blob/master/php7.2/README.md) 
+- [php5](https://github.com/wxxiong6/docker-lnmp/blob/master/php5/README.md) 
+- [mysql](https://github.com/wxxiong6/docker-lnmp/blob/master/nginx/mysql.md) 
+- [redis](https://github.com/wxxiong6/docker-lnmp/blob/master/nginx/redis.md) 
+- [rabbitMQ](https://github.com/wxxiong6/docker-lnmp/blob/master/nginx/rabbitMQ.md) 
 
-在php7.2基础镜像中增加了 xdebug、gd、mongodb、yaf、pdo_mysql、yar 、bcmath  扩展
+
 
 ## 打包镜像
 
