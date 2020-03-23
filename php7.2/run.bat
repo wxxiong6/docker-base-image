@@ -1,8 +1,9 @@
-@echo off 
+@echo off
+
 title php install
 
 set nginx_web_dir=D:/web
-set docker_php_dir="D:/docker/php7.2"
+set docker_php_dir=D:/docker/php7.2
 set docker_name="xwx/php-fpm:7.2.5"
 
 
