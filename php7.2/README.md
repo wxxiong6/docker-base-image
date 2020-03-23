@@ -1,18 +1,18 @@
 ## php7.2 安装
 
-构建镜像
+### 构建镜像
 
 ```shell
 ./build.sh
 ```
 
-安装镜像
+### 安装镜像
 
 ```shell
 ./run.sh
 ```
 
-支持以下模块
+### 支持以下模块
 
 [PHP Modules]
 - Core
