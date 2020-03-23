@@ -15,6 +15,7 @@
 ### 支持以下模块
 
 [PHP Modules]
+- bcmath
 - Core
 - ctype
 - curl
