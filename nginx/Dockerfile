@@ -13,5 +13,5 @@ LABEL description="nginx:1.10"
 
 
 #将预先下载好的拓展包从宿主机拷贝进去
-COPY resources/conf/nginx.conf /etc/nginx/nginx.conf
-COPY resources/conf/ /etc/nginx
+COPY resources/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY resources/nginx /etc/nginx

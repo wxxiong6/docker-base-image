@@ -1,1 +1,1 @@
-docker build . -t xwx/nginx:1.10
+docker build . -t wxxiong6/nginx:1.10
