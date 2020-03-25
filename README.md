@@ -20,7 +20,7 @@
 ```shell
 #.env 文件
 dockerfile_dir=d:/docker/dockerfile 
-web_dir=d:/www              
+web_dir=d:/web              
 docker_dir=d:/docker #docker 挂载目录
 ```
 
