@@ -19,9 +19,10 @@
 
 ```shell
 #.env 文件
-dockerfile_dir=d:/docker/dockerfile 
-web_dir=d:/web              
-docker_dir=d:/docker #docker 挂载目录
+DOCKERFILE_DIR=d:/docker/dockerfile
+WEBROOT_DIR=d:/web
+DOCKER_DIR=d:/docker
+DOCKER_USER=wxxiong6
 ```
 
 **根据自己实际情况修改目录**
