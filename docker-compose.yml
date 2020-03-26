@@ -8,8 +8,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - 9000:9000
-    volumes:
+    volumes:    
         - ${DOCKER_DIR}/php7.2/etc:/usr/local/etc
+        - ${DOCKER_DIR}/php7.2/logs:/var/log/php
         - ${WEBROOT_DIR}:/var/www/html
   nginx:
     container_name: nginx
@@ -21,7 +22,7 @@ services:
       - 80:80
       - 443:443
     volumes:
-      #- ${DOCKER_DIR}/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ${DOCKER_DIR}/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ${DOCKER_DIR}/nginx/conf.d:/etc/nginx/conf.d
       - ${DOCKER_DIR}/nginx/logs:/var/log/nginx
       - ${WEBROOT_DIR}:/var/www/html
