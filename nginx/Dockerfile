@@ -3,15 +3,12 @@
 
 
 FROM nginx:1.10
-MAINTAINER wxxiong <wxxiong6@gmail.com>
+
+LABEL maintainer="wxxiong <wxxiong6@gmail.com>" version="1.0" description="nginx:1.10"
 
 ENV TZ "Asia/Shanghai"
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-LABEL version="1.0"
-LABEL description="nginx:1.10"
+RUN rm /etc/nginx/conf.d/default.conf
 
-
-#将预先下载好的拓展包从宿主机拷贝进去
-COPY resources/nginx/nginx.conf /etc/nginx/nginx.conf
-COPY resources/nginx /etc/nginx
+VOLUME ["/var/www/html", "/etc/nginx/conf.d", "/var/log/nginx"]

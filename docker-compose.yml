@@ -1,4 +1,4 @@
-version: "3.6"
+version: "3"
 services:
   php-fpm:
     container_name: php-fpm
@@ -22,13 +22,13 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - ${DOCKER_DIR}/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ${DOCKER_DIR}/nginx/conf.d:/etc/nginx/conf.d
+      #- ${DOCKER_DIR}/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ${DOCKER_DIR}/nginx/logs:/var/log/nginx
       - ${WEBROOT_DIR}:/var/www/html
     links:
       - php-fpm
-
+    restart: always
   mysql:
     image: mysql:5.7
     container_name: mysql

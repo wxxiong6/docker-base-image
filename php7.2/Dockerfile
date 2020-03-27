@@ -1,5 +1,5 @@
 #
-# Dockerfile for building PHP7 images
+# Dockerfile for building PHP7.2.5 images
 # php-ext
 # xdebug、gd、mongodb、yaf、pdo_mysql、yar
 #
@@ -11,8 +11,8 @@ MAINTAINER wxxiong <wxxiong6@gmail.com>
 ENV TZ "Asia/Shanghai"
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-LABEL version="1.0"
-LABEL description="php-fpm:7.2.5"
+LABEL version="1.0" description="php-fpm:7.2.5"
+
 
 #将预先下载好的扩展包从宿主机拷贝进去
 COPY resources/ /tmp/resources/
@@ -21,7 +21,7 @@ COPY resources/ /tmp/resources/
 
 #apt-get
 RUN  mv /etc/apt/sources.list /etc/apt/sources.list.bak && mv /tmp/resources/sources.list /etc/apt/ \
-     && apt-get update  && apt-get install -y --assume-yes \
+     && apt-get update -y && apt-get install -y  --assume-yes apt-utils && apt-get install -y  \
      wget                \
      procps              \
      vim                 \
@@ -69,7 +69,6 @@ RUN  mv /etc/apt/sources.list /etc/apt/sources.list.bak && mv /tmp/resources/sou
     && ./configure \
     && make  -j$(nproc) \
     && make install \
-    && rm -rf /tmp/resources/ImageMagick-6.9.10-23  /tmp/resources/ImageMagick-6.9.10-23.tar.gz \
     \
     && tar -zxvf  /tmp/resources/imagick-3.4.3.tgz -C /tmp/resources/ \
     && cd /tmp/resources/imagick-3.4.3 \
@@ -94,10 +93,7 @@ RUN  mv /etc/apt/sources.list /etc/apt/sources.list.bak && mv /tmp/resources/sou
     \
     && cp /tmp/resources/php7/etc/php/php.ini  /usr/local/etc/php/ \
     && cp /tmp/resources/php7/etc/php/conf.d/* /usr/local/etc/php/conf.d/ \
-     \
-     && php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
-    php composer-setup.php && \
-    php -r "unlink('composer-setup.php');" && \
-    mv composer.phar /usr/local/bin/composer
+    && rm -rvf /tmp/resources/ \
 
+VOLUME ["/usr/local/etc", "/var/log/php"]
 #Composer
