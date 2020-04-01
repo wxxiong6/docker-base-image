@@ -1,7 +1,7 @@
 #
 # Dockerfile for building PHP7.2.5 images
 # php-ext
-# xdebug、gd、mongodb、yaf、pdo_mysql、yar
+# xdebug、gd、mongodb、yaf、pdo_mysql、yar、swoole
 #
 #
 
@@ -38,7 +38,6 @@ RUN  mv /etc/apt/sources.list /etc/apt/sources.list.bak && mv /tmp/resources/sou
      libxslt1-dev        \
      libcurl4-gnutls-dev \
      \
-     && rm -rf /var/cache/apt \
      && docker-php-ext-configure gd  --with-freetype-dir=/usr/include/freetype2 --with-png-dir=/usr/include --with-jpeg-dir=/usr/include \
      && docker-php-ext-install  -j$(nproc) gd  pdo_mysql sockets soap bcmath zip \
      && docker-php-ext-enable gd  pdo_mysql sockets soap bcmath zip               \
@@ -77,13 +76,6 @@ RUN  mv /etc/apt/sources.list /etc/apt/sources.list.bak && mv /tmp/resources/sou
     && make  -j$(nproc) \
     && make install \
     \
-    && tar -zxf  /tmp/resources/yar-2.0.5.tgz -C /tmp/resources/ \
-    && cd /tmp/resources/yar-2.0.5  \
-    && phpize \
-    &&  ./configure --with-php-config=php-config \
-    && make -j$(nproc) \
-    && make install \
-    \
     && tar -zxf  /tmp/resources/mcrypt-1.0.2.tgz -C /tmp/resources/ \
     && cd /tmp/resources/mcrypt-1.0.2  \
     && phpize \
@@ -91,8 +83,22 @@ RUN  mv /etc/apt/sources.list /etc/apt/sources.list.bak && mv /tmp/resources/sou
     && make -j$(nproc) \
     && make install \
     \
+    && tar -zxf  /tmp/resources/swoole-src-4.4.17.tar.gz -C /tmp/resources/ \
+    && cd /tmp/resources/swoole-src-4.4.17  \
+    && phpize \
+    &&  ./configure --with-php-config=php-config \
+    && make -j$(nproc) \
+    && make install \
+    \
     && cp /tmp/resources/php7/etc/php/php.ini  /usr/local/etc/php/ \
     && cp /tmp/resources/php7/etc/php/conf.d/* /usr/local/etc/php/conf.d/ \
-    && rm -rvf /tmp/resources/
+    && rm -rvf /tmp/resources/ \
+    \
+    && apt-get purge -y --auto-remove \
+        -o APT::AutoRemove::RecommendsImportant=false \
+        -o APT::AutoRemove::SuggestsImportant=false \
+        $buildDeps \
+    && rm -rf /var/cache/apt/* \
+    && rm -rf /var/lib/apt/lists/*
 
 VOLUME ["/usr/local/etc", "/var/log/php"]
