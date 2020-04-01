@@ -6,16 +6,9 @@ set nginx_web_dir=D:/web
 set docker_nginx_dir=D:/docker/nginx
 set docker_name="xwx/nginx:1.10"
 
-if  not exist %nginx_web_dir% (
-    md  %nginx_web_dir%
-)
-
-if not  exist %docker_nginx_dir% (
-    md  %docker_nginx_dir%
-)
 
 
-xcopy "./resources/nginx" "%docker_nginx_dir%"  /e /h /d /y /i
+
 set used=false
 for /F "usebackq tokens=1" %%i in (`"docker ps -a|find "nginx""`) do (
     set old_docker_name=%%i

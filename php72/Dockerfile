@@ -2,7 +2,7 @@
 # Dockerfile for building PHP7.2.5 images
 # php-ext
 # xdebug、gd、mongodb、yaf、pdo_mysql、yar、swoole
-#
+# see: https://hub.docker.com/_/php
 #
 
 FROM php:7.2.5-fpm
@@ -90,8 +90,6 @@ RUN  mv /etc/apt/sources.list /etc/apt/sources.list.bak && mv /tmp/resources/sou
     && make -j$(nproc) \
     && make install \
     \
-    && cp /tmp/resources/php7/etc/php/php.ini  /usr/local/etc/php/ \
-    && cp /tmp/resources/php7/etc/php/conf.d/* /usr/local/etc/php/conf.d/ \
     && rm -rvf /tmp/resources/ \
     \
     && apt-get purge -y --auto-remove \

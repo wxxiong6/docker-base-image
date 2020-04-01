@@ -1,23 +1,22 @@
 #!/bin/bash
 
-nginx_web_dir="/var/www/html"
-docker_nginx_dir="/docker/nginx"
-docker_name="xwx/nginx:1.10"
+file=".env"
 
+if [ -f "$file" ]
+then
+  echo "$file found."
 
-if [ ! -d $nginx_web_dir ]; then
-	echo "mkdir -p $nginx_web_dir"
-	mkdir -p $nginx_web_dir	
+  while IFS='=' read -r key value
+  do
+	echo "${key}=${value}"
+  
+  done < "$file"
+
+else
+  echo "$file not found."
 fi
 
-if [ ! -d $docker_nginx_dir ]; then
-	echo "mkdir -p $docker_php_dir"
-	mkdir -p $docker_nginx_dir
-fi
 
-
-
-cp -rf ./resources/nginx/* ${docker_nginx_dir}/
 
 old_docker_name=`docker ps -a|grep nginx|awk '{print $1}'`
 if [ -n "$old_docker_name" ]; then
