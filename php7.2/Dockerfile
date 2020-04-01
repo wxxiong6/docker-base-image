@@ -6,13 +6,13 @@
 #
 
 FROM php:7.2.5-fpm
-MAINTAINER wxxiong <wxxiong6@gmail.com>
+
 
 ENV TZ "Asia/Shanghai"
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-LABEL version="1.0" description="php-fpm:7.2.5"
 
+LABEL maintainer="wxxiong <wxxiong6@gmail.com>" version="1.0" description="nginx:7.2.5"
 
 #将预先下载好的扩展包从宿主机拷贝进去
 COPY resources/ /tmp/resources/
@@ -21,7 +21,7 @@ COPY resources/ /tmp/resources/
 
 #apt-get
 RUN  mv /etc/apt/sources.list /etc/apt/sources.list.bak && mv /tmp/resources/sources.list /etc/apt/ \
-     && apt-get update -y && apt-get install -y  --assume-yes apt-utils && apt-get install -y  \
+     && apt-get update -y && apt-get install -y  \
      wget                \
      procps              \
      vim                 \
@@ -93,7 +93,6 @@ RUN  mv /etc/apt/sources.list /etc/apt/sources.list.bak && mv /tmp/resources/sou
     \
     && cp /tmp/resources/php7/etc/php/php.ini  /usr/local/etc/php/ \
     && cp /tmp/resources/php7/etc/php/conf.d/* /usr/local/etc/php/conf.d/ \
-    && rm -rvf /tmp/resources/ \
+    && rm -rvf /tmp/resources/
 
 VOLUME ["/usr/local/etc", "/var/log/php"]
-#Composer
