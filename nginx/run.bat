@@ -2,12 +2,10 @@
 
 title nginx install
 
-set nginx_web_dir=D:/web
-set docker_nginx_dir=D:/docker/nginx
-set docker_name="xwx/nginx:1.10"
-
-
-
+set WEBROOT_DIR=D:/web
+set DOCKERFILE_DIR=D:/docker/docker-lnmp
+set DOCKER_LOGS_DIR=D:/docker/logs/nginx
+set docker_name="wxxiong6/nginx:1.10"
 
 set used=false
 for /F "usebackq tokens=1" %%i in (`"docker ps -a|find "nginx""`) do (
@@ -21,7 +19,7 @@ for /F "usebackq tokens=1" %%i in (`"docker ps -a|find "nginx""`) do (
 )
 
 
-docker run --name nginx  --link php-fpm:php-fpm -p 80:80 -p443:443 -v %nginx_web_dir%:/var/www/html -v %docker_nginx_dir%/nginx.conf:/etc/nginx/nginx.conf -v %docker_nginx_dir%/conf.d:/etc/nginx/conf.d -v %docker_nginx_dir%/logs:/var/log/nginx -d %docker_name%
+docker run --name nginx  --link php-fpm:php-fpm -p 80:80 -p443:443 -v %WEBROOT_DIR%:/var/www/html -v %dockerfile_dir%/nginx.conf:/etc/nginx/nginx.conf -v %dockerfile_dir%/conf.d:/etc/nginx/conf.d -v %DOCKER_LOGS_DIR%/nginx:/var/log/nginx -d %docker_name%
 
 if %ERRORLEVEL% == 0 (
    echo install success
