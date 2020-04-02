@@ -30,19 +30,23 @@ DOCKER_USER=wxxiong6
 
 **根据自己实际情况修改目录**
 
-- DOCKERFILE_DIR下载这个docker源码目录
-- WEBROOT_DIR     web项目目录
-- DOCKER_LOGS_DIR   nginx 的配置文件、日志，php配置目录，mysql data目录等等.
-- DOCKER_DATA_DIR 持久化docker服务数据目录
-- DOCKER_USER      镜像名称
+- DOCKERFILE_DIR       下载docker项目源码目录
+- WEBROOT_DIR            web项目目录
+- DOCKER_LOGS_DIR   日志目录
+- DOCKER_DATA_DIR   持久化docker服务数据目录
+- DOCKER_USER         镜像名称
 
 ## 安装方法
 
 1.  使用git clone 项目 :
 
    ```shell
-   git clone https://github.com/wxxiong6/docker-lnmp.git
+   git clone https://github.com/wxxiong6/docker-lnmp.git 
    ```
+
+   或者直接下载：https://github.com/wxxiong6/docker-lnmp/archive/master.zip
+
+   
 
 2. 切换到目录,修改.env文件:
 
