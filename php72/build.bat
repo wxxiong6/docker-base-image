@@ -1,1 +1,1 @@
-docker build . -t wxxiong6/php-fpm:7.2.5
+docker build . -t wxxiong6/php:72

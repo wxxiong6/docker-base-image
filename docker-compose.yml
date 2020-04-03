@@ -23,7 +23,7 @@ services:
       - 443:443
     volumes:
       - ${DOCKERFILE_DIR}/nginx/conf/conf.d:/etc/nginx/conf.d
-   #   - ${DOCKERFILE_DIR}/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+      - ${DOCKERFILE_DIR}/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
       - ${DOCKER_LOGS_DIR}/nginx:/var/log/nginx
       - ${WEBROOT_DIR}:/var/www/html
     links:
@@ -49,7 +49,7 @@ services:
       TZ: Asia/Shanghai
     volumes:
       - ${DOCKERFILE_DIR}/redis50/conf/redis.conf:/etc/redis/redis.conf
-      - ${DOCKERFILE_DIR}/redis50/data:/data
+      - ${DOCKE_DATA_DIR}/redis50/data:/data
     command: ['redis-server', '/etc/redis/redis.conf']
 networks:
   default:
