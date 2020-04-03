@@ -12,7 +12,7 @@ ENV TZ "Asia/Shanghai"
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 
-LABEL maintainer="wxxiong <wxxiong6@gmail.com>" version="1.0" description="nginx:7.2.5"
+LABEL maintainer="wxxiong <wxxiong6@gmail.com>" version="${PHP_VERSION}" description="php-fpm:${PHP_VERSION}"
 
 #将预先下载好的扩展包从宿主机拷贝进去
 COPY resources/ /tmp/resources/
@@ -42,8 +42,8 @@ RUN  mv /etc/apt/sources.list /etc/apt/sources.list.bak && mv /tmp/resources/sou
      && docker-php-ext-install  -j$(nproc) gd  pdo_mysql sockets soap bcmath zip \
      && docker-php-ext-enable gd  pdo_mysql sockets soap bcmath zip               \
     \
-    && tar -zxf /tmp/resources/xdebug-2.6.1.tgz  -C /tmp/resources/ \
-    && cd /tmp/resources/xdebug-2.6.1                     \
+    && tar -zxf /tmp/resources/xdebug-2.9.4.tgz  -C /tmp/resources/ \
+    && cd /tmp/resources/xdebug-2.9.4                     \
     && phpize                                   \
     && ./configure --with-php-config=php-config \
     && make -j$(nproc)                          \
@@ -51,6 +51,13 @@ RUN  mv /etc/apt/sources.list /etc/apt/sources.list.bak && mv /tmp/resources/sou
     \
     && tar -zxf  /tmp/resources/yaf-3.0.7.tgz -C /tmp/resources/ \
     && cd /tmp/resources/yaf-3.0.7  \
+    && phpize \
+    &&  ./configure --with-php-config=php-config \
+    && make -j$(nproc) \
+    && make install \
+    \
+    && tar -zxf  /tmp/resources/yar-2.1.2.tgz -C /tmp/resources/ \
+    && cd /tmp/resources/yar-2.1.2  \
     && phpize \
     &&  ./configure --with-php-config=php-config \
     && make -j$(nproc) \

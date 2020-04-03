@@ -26,15 +26,24 @@ WEBROOT_DIR=/web
 DOCKER_LOGS_DIR=/docker/logs
 DOCKER_DATA_DIR=/docker/data
 DOCKER_USER=wxxiong6
+PHP_VERSION=72
 ```
 
 **根据自己实际情况修改目录**
 
 - DOCKERFILE_DIR       下载docker项目源码目录
+
 - WEBROOT_DIR            web项目目录
+
 - DOCKER_LOGS_DIR   日志目录
+
 - DOCKER_DATA_DIR   持久化docker服务数据目录
+
 - DOCKER_USER         镜像名称
+
+- PHP_VERSION           安装php版本 支持71、72
+
+  对应php-7.1.30、php-7.2.5
 
 ## 安装方法
 

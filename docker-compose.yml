@@ -2,16 +2,16 @@ version: "3"
 services:
   php-fpm:
     container_name: php-fpm
-    image: "${DOCKER_USER}/php-fpm:7.2.5"
+    image: "${DOCKER_USER}/php-fpm:${PHP_VERSION}"
     build:
-      context: ${DOCKERFILE_DIR}/php72
+      context: ${DOCKERFILE_DIR}/php${PHP_VERSION}
       dockerfile: Dockerfile
     ports:
       - 9000:9000
-    volumes:    
-        - ${DOCKERFILE_DIR}/php72/etc:/usr/local/etc
-        - ${DOCKER_LOGS_DIR}/php72:/var/log/php
+    volumes:
+        - ${DOCKER_LOGS_DIR}/php${PHP_VERSION}:/var/log/php
         - ${WEBROOT_DIR}:/var/www/html
+        - ${DOCKERFILE_DIR}/php${PHP_VERSION}/etc:/usr/local/etc
   nginx:
     container_name: nginx
     image: "${DOCKER_USER}/nginx:1.11"
@@ -23,7 +23,7 @@ services:
       - 443:443
     volumes:
       - ${DOCKERFILE_DIR}/nginx/conf/conf.d:/etc/nginx/conf.d
-      - ${DOCKERFILE_DIR}/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+   #   - ${DOCKERFILE_DIR}/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
       - ${DOCKER_LOGS_DIR}/nginx:/var/log/nginx
       - ${WEBROOT_DIR}:/var/www/html
     links:
@@ -51,3 +51,5 @@ services:
       - ${DOCKERFILE_DIR}/redis50/conf/redis.conf:/etc/redis/redis.conf
       - ${DOCKERFILE_DIR}/redis50/data:/data
     command: ['redis-server', '/etc/redis/redis.conf']
+networks:
+  default:
