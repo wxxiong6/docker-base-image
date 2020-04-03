@@ -18,7 +18,7 @@
 
 
 
-### 默认环境变量
+### 默认配置
 
 ```shell
 #.env 文件
@@ -30,7 +30,9 @@ DOCKER_USER=wxxiong6
 PHP_VERSION=72
 ```
 
-**根据自己实际情况修改目录**
+**请根据自己实际情况.env文件中的参数**
+
+.evn文件参数详细说明
 
 - DOCKERFILE_DIR       下载docker项目源码目录
 
@@ -38,11 +40,11 @@ PHP_VERSION=72
 
 - DOCKER_LOGS_DIR   日志目录
 
-- DOCKER_DATA_DIR   持久化docker服务数据目录
+- DOCKER_DATA_DIR   数据目录
 
 - DOCKER_USER         镜像名称
 
-- PHP_VERSION           安装php版本 支持71、72
+- PHP_VERSION           安装php版本 支持参数71、72
 
   对应php-7.1.30、php-7.2.5
 
