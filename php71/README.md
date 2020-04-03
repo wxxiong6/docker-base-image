@@ -1,4 +1,8 @@
-## php7.2 安装
+##  php7.1.30
+
+版本：php7.1.30
+
+镜像使用官方镜像制作而成，增加常用的php扩展（yaf、yar、imagick、mcrypt、mongodb、swoole、xdebug）。
 
 ### 构建镜像
 

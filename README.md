@@ -4,16 +4,17 @@
 
 开发团队可以统一环境，提升效率减少BUG的产生。
 
-镜像都是使用官方镜像制作而成，使用安全放心。
+镜像使用官方镜像制作而成，增加常用的php扩展（yaf、yar、imagick、mcrypt、mongodb、swoole、xdebug）。
 
-
+支持多版本php切换，支持版（php7.1.30、php7.2.5）。
 
 ##  包含镜像
 
 - [nginx1.10](https://github.com/wxxiong6/docker-lnmp/blob/master/nginx/README.md)
-- [php7.2.5](https://github.com/wxxiong6/docker-lnmp/blob/master/php7.2/README.md) 
-- [mysql5.7](https://github.com/wxxiong6/docker-lnmp/blob/master/mysql/README.md) 
-- [redis5.0](https://github.com/wxxiong6/docker-lnmp/blob/master/redis5.0/README.md) 
+- [php7.2.5](https://github.com/wxxiong6/docker-lnmp/blob/master/php71/README.md) 
+- [php7.1.30](https://github.com/wxxiong6/docker-lnmp/blob/master/php71/README.md) 
+- [mysql5.7](https://github.com/wxxiong6/docker-lnmp/blob/master/mysql57/README.md) 
+- [redis5.0](https://github.com/wxxiong6/docker-lnmp/blob/master/redis50/README.md) 
 
 
 
@@ -78,4 +79,6 @@ PHP_VERSION=72
 
 ## 更新日志
 
-- 增加docker-compose
+-  2020-04-02  V1.0.0 发布第一版
+- 2020-04-05  V1.0.1 第二版
+  增加可选php版本安装
