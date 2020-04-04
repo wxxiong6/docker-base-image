@@ -49,7 +49,7 @@ services:
       TZ: Asia/Shanghai
     volumes:
       - ${DOCKERFILE_DIR}/redis50/conf/redis.conf:/etc/redis/redis.conf
-      - ${DOCKER_DATA_DIR}/redis50/data:/data
+      - ${DOCKER_DATA_DIR}/redis50:/data
     command: ['redis-server', '/etc/redis/redis.conf']
 networks:
   default:
