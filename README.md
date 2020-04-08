@@ -81,6 +81,6 @@ PHP_VERSION=72
 
 ## 更新日志
 
--  2020-04-02  [V1.1-alpha](https://github.com/wxxiong6/docker-lnmp/releases/tag/v1.0) 发布第一版
+-  2020-04-02  [V1.0-alpha](https://github.com/wxxiong6/docker-lnmp/releases/tag/v1.0) 发布第一版
 - 2020-04-05  [V1.1-alpha](https://github.com/wxxiong6/docker-lnmp/releases/tag/v1.1) 第二版 
   增加可选php版本安装
