@@ -14,7 +14,7 @@ services:
         - ${DOCKERFILE_DIR}/php${PHP_VERSION}/etc:/usr/local/etc
   nginx:
     container_name: nginx
-    image: "${DOCKER_USER}/nginx:1.11"
+    image: "${DOCKER_USER}/nginx:1.10"
     build:
       context: ${DOCKERFILE_DIR}/nginx
       dockerfile: Dockerfile

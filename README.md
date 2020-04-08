@@ -4,7 +4,7 @@
 
 开发团队可以统一环境，提升效率减少BUG的产生。
 
-镜像使用官方镜像制作而成，增加常用的php扩展（yaf、yar、imagick、mcrypt、mongodb、swoole、xdebug）。
+镜像使用官方镜像制作而成，增加常用的php扩展（yaf、yar、imagick、mcrypt、mongodb、swoole、xdebug、xlswriter）。
 
 支持多版本php切换，支持版（php7.1.30、php7.2.5）。
 
