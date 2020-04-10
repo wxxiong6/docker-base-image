@@ -97,7 +97,7 @@ RUN  mv /etc/apt/sources.list /etc/apt/sources.list.bak && mv /tmp/resources/sou
     && tar -zxf  /tmp/resources/xlswriter-1.3.4.tgz -C /tmp/resources/ \
     && cd /tmp/resources/xlswriter-1.3.4 \
     && phpize \
-    &&  ./configure --with-php-config=php-config \
+    &&  ./configure --with-php-config=php-config  --enable-reader \
     && make -j$(nproc) \
     && make install \
     \
