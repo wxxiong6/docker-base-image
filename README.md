@@ -6,12 +6,13 @@
 
 镜像使用官方镜像制作而成，增加常用的php扩展（yaf、yar、imagick、mcrypt、mongodb、swoole、xdebug、xlswriter）。
 
-支持多版本php切换，支持版（php7.1.30、php7.2.5）。
+支持多版本php切换，支持版（php7.1.30、php7.2.5、7.4.14）。
 
 ##  包含镜像
 
 - [nginx1.10](https://github.com/wxxiong6/docker-lnmp/blob/master/nginx/README.md)
-- [php7.2.5](https://github.com/wxxiong6/docker-lnmp/blob/master/php71/README.md) 
+- [php7.4.14](https://github.com/wxxiong6/docker-lnmp/blob/master/php74/README.md) 
+- [php7.2.5](https://github.com/wxxiong6/docker-lnmp/blob/master/php72/README.md) 
 - [php7.1.30](https://github.com/wxxiong6/docker-lnmp/blob/master/php71/README.md) 
 - [mysql5.7](https://github.com/wxxiong6/docker-lnmp/blob/master/mysql57/README.md) 
 - [redis5.0](https://github.com/wxxiong6/docker-lnmp/blob/master/redis50/README.md) 
@@ -27,7 +28,7 @@ WEBROOT_DIR=/web
 DOCKER_LOGS_DIR=/docker/logs
 DOCKER_DATA_DIR=/docker/data
 DOCKER_USER=wxxiong6
-PHP_VERSION=72
+PHP_VERSION=74
 ```
 
 **请根据自己实际情况.env文件中的参数**
@@ -44,7 +45,7 @@ PHP_VERSION=72
 
 - DOCKER_USER         镜像名称
 
-- PHP_VERSION           安装php版本 支持参数71、72
+- PHP_VERSION           安装php版本 支持参数71、72、74
 
   对应php-7.1.30、php-7.2.5
 
@@ -82,5 +83,6 @@ PHP_VERSION=72
 ## 更新日志
 
 -  2020-04-02  [V1.0-alpha](https://github.com/wxxiong6/docker-lnmp/releases/tag/v1.0) 发布第一版
-- 2020-04-05  [V1.1-alpha](https://github.com/wxxiong6/docker-lnmp/releases/tag/v1.1) 第二版 
-  增加可选php版本安装
+- 2020-04-05  [V1.1-alpha](https://github.com/wxxiong6/docker-lnmp/releases/tag/v1.1) 增加可选php版本安装
+- 2021-01-23  [V1.1-alpha](https://github.com/wxxiong6/docker-lnmp/releases/tag/v1.2) 增加php7.4
+
