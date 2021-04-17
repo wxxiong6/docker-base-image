@@ -12,6 +12,9 @@ services:
         - ${DOCKER_LOGS_DIR}/php${PHP_VERSION}:/var/log/php
         - ${WEBROOT_DIR}:/var/www/html
         - ${DOCKERFILE_DIR}/php${PHP_VERSION}/etc:/usr/local/etc
+    links:
+        - mysql
+        - redis
   nginx:
     container_name: nginx
     image: "${DOCKER_USER}/nginx:1.10"
