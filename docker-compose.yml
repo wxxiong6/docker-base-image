@@ -56,5 +56,19 @@ services:
       - ${DOCKERFILE_DIR}/redis50/conf/redis.conf:/etc/redis/redis.conf
       - ${DOCKER_DATA_DIR}/redis50:/data
     command: ['redis-server', '/etc/redis/redis.conf']
+
+  rabbit:
+    image: rabbitmq:3.9.11-management
+    container_name: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      - TZ=Asia/Shanghai
+      - RABBITMQ_DEFAULT_USER=${DOCKER_USER}
+      - RABBITMQ_DEFAULT_PASS=${DOCKER_USER}
+    volumes:
+      - ${DOCKER_DATA_DIR}/rabbitmq:/var/lib/rabbitmq
+
 networks:
   default:
