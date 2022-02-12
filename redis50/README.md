@@ -10,7 +10,7 @@
 
 ```shell
  -v ${docker_redis_dir}/data:/data
- -v ${docker_redis_dir}/conf:/usr/local/etc/redis
+ -v ${docker_redis_dir}/conf:/etc/redis/
 ```
 
 ### 运行容器

@@ -16,7 +16,7 @@ if [ -n "$old_docker_name" ]; then
     echo "删除之前安装redis-server容器:${old_docker_name},${rm_res}"
 fi
 
-res=`docker run --name redis-server -p 6379:6379 -v ${docker_redis_dir}/data:/data -v ${docker_redis_dir}/conf:/usr/local/etc/redis  -d ${docker_name}  redis-server --appendonly yes` 
+res=`docker run --name redis-server -p 6379:6379 -v ${docker_redis_dir}/data:/data -v ${docker_redis_dir}/conf:/etc/redis/  -d ${docker_name}  redis-server --appendonly yes` 
 if [ -n "$res" ]; then
     echo "install success [$res]"
 else

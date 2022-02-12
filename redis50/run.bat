@@ -19,7 +19,7 @@ for /F "usebackq tokens=1" %%i in (`"docker ps -a|find "redis-server""`) do (
 )
 
 
-docker run --name redis-server -p 6379:6379 -v %docker_redis_dir%/data:/data -v %docker_redis_dir%/conf:/usr/local/etc/redis  -d %docker_name%  redis-server --appendonly yes
+docker run --name redis-server -p 6379:6379 -v %docker_redis_dir%/data:/data -v %docker_redis_dir%/conf:/etc/redis/  -d %docker_name%  redis-server --appendonly yes
 
 if %ERRORLEVEL% == 0 (
    echo install success

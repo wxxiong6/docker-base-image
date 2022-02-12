@@ -53,7 +53,7 @@ services:
     environment:
       TZ: Asia/Shanghai
     volumes:
-      - ${DOCKERFILE_DIR}/redis50/conf/redis.conf:/etc/redis/redis.conf
+      - ${DOCKERFILE_DIR}/redis50/conf:/etc/redis
       - ${DOCKER_DATA_DIR}/redis50:/data
     command: ['redis-server', '/etc/redis/redis.conf']
 
