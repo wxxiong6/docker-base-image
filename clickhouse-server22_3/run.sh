@@ -1,5 +1,5 @@
 #!/bin/bash 
-set -ex
+#set -ex
 
 path=$(dirname "$PWD")
 file=$path"/.env"
@@ -16,7 +16,7 @@ else
     echo "$file not found."
 fi
 
-docker_clickhouse_dir=$(dirname $(dirname $(pwd)))/clickhous22
+docker_clickhouse_dir=$(dirname $(dirname $(pwd)))/data/clickhous22
 docker_name="clickhouse-server:22.3.7.28"
 
 
@@ -29,25 +29,25 @@ fi
 old_docker_name=`docker ps -a|grep clickhouse|awk '{print $1}'`
 if [ -n "$old_docker_name" ]; then
     rm_res=`docker stop ${old_docker_name} && docker rm ${old_docker_name}`
-    echo "delete the previous  container: '${old_docker_name}', ${rm_res}"
+    echo "delete the previous  container: '${old_docker_name}'"
 fi
 	   
 
-docker run -d clickhouse/clickhouse-server:22.3.7.28\
-	--name clickhouse-server \ 
-    -e CLICKHOUSE_DB=my_database \
-	-e CLICKHOUSE_USER=username \ 
-	-e CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT=1 \
-	-e CLICKHOUSE_PASSWORD=password \
-	-p 9000:9000/tcp \
-    -v ${path}/etc/config.d/config.xml:/etc/clickhouse-server/config.xml \
-    -v ${path}/etc/config.d/config.xml:/etc/clickhouse-server/config.xml \
+docker run  -d    --name=clickhouse-server \
+	-p 9000:9000  \
 	-v ${docker_clickhouse_dir}/ch_data:/var/lib/clickhouse/ \
 	-v ${docker_clickhouse_dir}/ch_logs:/var/log/clickhouse-server/ \
-    --ulimit nofile=262144:262144 
+    --ulimit nofile=262144:262144  \
+   clickhouse/clickhouse-server:22.3.7.28    
+    #-v ${path}/etc/config.d/config.xml:/etc/clickhouse-server/config.xml \
+    ###-v ${path}/etc/config.d/config.xml:/etc/clickhouse-server/config.xml \
+   # -e CLICKHOUSE_DB=my_database                      \
+#	-e CLICKHOUSE_USER=username                        \
+#	-e CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT=1        \
+#	-e CLICKHOUSE_PASSWORD=password                   \
 
-if [ "$?" -neq 0 ]; then
-    echo "install success "
+if [ $? -eq 0 ]; then
+    echo "install success"
 else
     echo "install failure"
 fi
