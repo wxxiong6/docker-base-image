@@ -6,7 +6,9 @@
 
 镜像使用官方镜像制作而成，增加常用的php扩展（yaf、yar、imagick、mcrypt、mongodb、swoole、xdebug、xlswriter）。
 
-支持多版本php切换，支持版（php7.1.30、php7.2.5、7.4.14）。
+支持多版本php切换，支持版有（.1.30、.2.5、7.4.14、8.0 ）。
+支持多版本mysql切换，支持版有（5.7、8.0 ）。
+
 
 ##  包含镜像
 
@@ -15,7 +17,9 @@
 - [php7.2.5](https://github.com/wxxiong6/docker-lnmp/blob/master/php72/README.md) 
 - [php7.1.30](https://github.com/wxxiong6/docker-lnmp/blob/master/php71/README.md) 
 - [mysql5.7](https://github.com/wxxiong6/docker-lnmp/blob/master/mysql57/README.md) 
+- [mysql8,0](https://github.com/wxxiong6/docker-lnmp/blob/master/mysql80/README.md) 
 - [redis5.0](https://github.com/wxxiong6/docker-lnmp/blob/master/redis50/README.md) 
+- [clickhouse22](https://github.com/wxxiong6/docker-lnmp/blob/master/clickhouse-server22_3/README.md) 
 
 
 
