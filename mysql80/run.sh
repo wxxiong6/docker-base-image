@@ -2,7 +2,8 @@
 set -x
 
 docker_mysql_dir=$(dirname $(dirname $(pwd)))/mysql80
-docker_name="mysql:8.0"
+docker_name="mysql"
+label="8.0"
 
 
 if [ ! -d $docker_mysql_dir ]; then
@@ -11,13 +12,21 @@ if [ ! -d $docker_mysql_dir ]; then
 fi
 
 
-old_docker_name=`docker ps -a|grep mysql|awk '{print $1}'`
-if [ -n "$old_docker_name" ]; then
-    rm_res=`docker stop ${old_docker_name} && docker rm ${old_docker_name}`
-    echo "delete old container: '${old_docker_name}', ${rm_res}"
+last_docke_name=$(docker ps -a|grep ${docker_name}|awk '{print $1}')
+if [ -n "$last_docke_name" ]; then
+    $(docker stop ${last_docke_name} && docker rm ${last_docke_name})
+    echo "delete old container: '${last_docke_name}'"
 fi
 	   
-res=`docker run -p 3306:3306 --name mysql -v ${docker_mysql_dir}/conf:/etc/mysql/conf.d -v ${docker_mysql_dir}/logs:/logs -v ${docker_mysql_dir}/data:/var/lib/mysql -e TZ=Asia/Shanghai -e MYSQL_ROOT_PASSWORD=root -d ${docker_name} --default-authentication-plugin=mysql_native_password`    
+res=$(docker run -p 3306:3306                      \
+	--name mysql                                   \
+	-v ${docker_mysql_dir}/conf:/etc/mysql/conf.d  \
+	-v ${docker_mysql_dir}/logs:/logs              \
+	-v ${docker_mysql_dir}/data:/var/lib/mysql     \
+	-e TZ=Asia/Shanghai                            \
+	-e MYSQL_ROOT_PASSWORD=root                    \
+	-d ${docker_name}:${label}                              \
+	--default-authentication-plugin=mysql_native_password)    
 
 if [ -n "$res" ]; then
     echo "install success [$res]"
