@@ -34,7 +34,7 @@ services:
     links:
       - php-fpm
   mysql:
-    image: mysql:5.7
+    image: mysql:${MYSQL_VERSION}
     container_name: mysql
     ports:
       - 3306:3306
@@ -42,9 +42,9 @@ services:
       TZ: Asia/Shanghai
       MYSQL_ROOT_PASSWORD: root
     volumes:
-        - ${DOCKERFILE_DIR}/mysql57/conf:/etc/mysql/conf.d
-        - ${DOCKER_LOGS_DIR}/mysql57:/logs
-        - ${DOCKER_DATA_DIR}/mysql57:/var/lib/mysql
+        - ${DOCKERFILE_DIR}/mysql${MYSQL_VERSION}/conf:/etc/mysql/conf.d
+        - ${DOCKER_LOGS_DIR}/mysql${MYSQL_VERSION}:/logs
+        - ${DOCKER_DATA_DIR}/mysql${MYSQL_VERSION}:/var/lib/mysql
   redis:
     image: redis:5.0
     container_name: redis-server
@@ -61,8 +61,8 @@ services:
     image: rabbitmq:3.9.11-management
     container_name: rabbitmq
     ports:
-      - 5672:5672
-      - 15672:15672
+      - ${MYSQL_VERSION}2:${MYSQL_VERSION}2
+      - 1${MYSQL_VERSION}2:1${MYSQL_VERSION}2
     environment:
       - TZ=Asia/Shanghai
       - RABBITMQ_DEFAULT_USER=${DOCKER_USER}
