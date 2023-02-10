@@ -46,15 +46,15 @@ services:
         - ${DOCKER_LOGS_DIR}/mysql${MYSQL_VERSION}:/logs
         - ${DOCKER_DATA_DIR}/mysql${MYSQL_VERSION}:/var/lib/mysql
   redis:
-    image: redis:5.0
+    image: redis:7.0
     container_name: redis-server
     ports:
       - 6379:6379
     environment:
       TZ: Asia/Shanghai
     volumes:
-      - ${DOCKERFILE_DIR}/redis50/conf:/etc/redis
-      - ${DOCKER_DATA_DIR}/redis50:/data
+      - ${DOCKERFILE_DIR}/redis70/conf:/etc/redis
+      - ${DOCKER_DATA_DIR}/redis70:/data
     command: ['redis-server', '/etc/redis/redis.conf']
 
   rabbit:
