@@ -15,6 +15,7 @@ RUN set -eux; \
 		libc6-dev \
 		make \
 		pkg-config \
+		sync       \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
@@ -123,7 +124,7 @@ ENV GOPATH /go
 ENV PATH $GOPATH/bin:$PATH
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 
-RUN curl -s "https://raw.githubusercontent.com/\
+RUN curl  "https://raw.githubusercontent.com/\
 kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
 
 WORKDIR $GOPATH
