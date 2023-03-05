@@ -1,51 +1,51 @@
 version: "3"
 services:
-  php-fpm:
-    container_name: php-fpm
-    image: "${DOCKER_USER}/php-fpm:${PHP_VERSION}"
-    build:
-      context: ${DOCKERFILE_DIR}/php${PHP_VERSION}
-      dockerfile: Dockerfile
-    ports:
-      - 9000:9000
-    volumes:
-        - ${DOCKER_LOGS_DIR}/php${PHP_VERSION}:/var/log/php
-        - ${WEBROOT_DIR}:/var/www/html
-        - ${DOCKERFILE_DIR}/php${PHP_VERSION}/etc:/usr/local/etc
-    network:
-      - local-test
-  nginx:
-    container_name: nginx
-    image: "${DOCKER_USER}/nginx:1.10"
-    build:
-      context: ${DOCKERFILE_DIR}/nginx
-      dockerfile: Dockerfile
-    ports:
-      - 80:80
-      - 443:443
-    volumes:
-      - ${DOCKERFILE_DIR}/nginx/conf/conf.d:/etc/nginx/conf.d
-      - ${DOCKERFILE_DIR}/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
-      - ${DOCKERFILE_DIR}/nginx/conf/fastcgi_params:/etc/nginx/fastcgi_params
-      - ${DOCKERFILE_DIR}/nginx/conf/mime.types:/etc/nginx/mime.types
-      - ${DOCKER_LOGS_DIR}/nginx:/var/log/nginx
-      - ${WEBROOT_DIR}:/var/www/html
-    network:
-      - local-test
-  mysql:
-    image: mysql:${MYSQL_VERSION}
-    container_name: mysql
-    ports:
-      - 3306:3306
-    environment:
-      TZ: Asia/Shanghai
-      MYSQL_ROOT_PASSWORD: root
-    volumes:
-        - ${DOCKERFILE_DIR}/mysql${MYSQL_VERSION}/conf:/etc/mysql/conf.d
-        - ${DOCKER_LOGS_DIR}/mysql${MYSQL_VERSION}:/logs
-        - ${DOCKER_DATA_DIR}/mysql${MYSQL_VERSION}:/var/lib/mysql
-    network:
-      - local-test
+  # php-fpm:
+    # container_name: php-fpm
+    # image: "${DOCKER_USER}/php-fpm:${PHP_VERSION}"
+    # build:
+      # context: ${DOCKERFILE_DIR}/php${PHP_VERSION}
+      # dockerfile: Dockerfile
+    # ports:
+      # - 9000:9000
+    # volumes:
+        # - ${DOCKER_LOGS_DIR}/php${PHP_VERSION}:/var/log/php
+        # - ${WEBROOT_DIR}:/var/www/html
+        # - ${DOCKERFILE_DIR}/php${PHP_VERSION}/etc:/usr/local/etc
+    # networks:
+      # - local-test
+  # nginx:
+    # container_name: nginx
+    # image: "${DOCKER_USER}/nginx:1.10"
+    # build:
+      # context: ${DOCKERFILE_DIR}/nginx
+      # dockerfile: Dockerfile
+    # ports:
+      # - 80:80
+      # - 443:443
+    # volumes:
+      # - ${DOCKERFILE_DIR}/nginx/conf/conf.d:/etc/nginx/conf.d
+      # - ${DOCKERFILE_DIR}/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+      # - ${DOCKERFILE_DIR}/nginx/conf/fastcgi_params:/etc/nginx/fastcgi_params
+      # - ${DOCKERFILE_DIR}/nginx/conf/mime.types:/etc/nginx/mime.types
+      # - ${DOCKER_LOGS_DIR}/nginx:/var/log/nginx
+      # - ${WEBROOT_DIR}:/var/www/html
+    # networks:
+      # - local-test
+  # mysql:
+    # image: mysql:${MYSQL_VERSION}
+    # container_name: mysql
+    # ports:
+      # - 3306:3306
+    # environment:
+      # TZ: Asia/Shanghai
+      # MYSQL_ROOT_PASSWORD: root
+    # volumes:
+        # - ${DOCKERFILE_DIR}/mysql${MYSQL_VERSION}/conf:/etc/mysql/conf.d
+        # - ${DOCKER_LOGS_DIR}/mysql${MYSQL_VERSION}:/logs
+        # - ${DOCKER_DATA_DIR}/mysql${MYSQL_VERSION}:/var/lib/mysql
+    # networks:
+      # - local-test
   redis:
     image: redis:7.0
     container_name: redis-server
@@ -57,22 +57,22 @@ services:
       - ${DOCKERFILE_DIR}/redis70/conf:/etc/redis
       - ${DOCKER_DATA_DIR}/redis70:/data
     command: ['redis-server', '/etc/redis/redis.conf']
-    network:
+    networks:
       - local-test
-  rabbit:
-    image: rabbitmq:3.9.11-management
-    container_name: rabbitmq
-    ports:
-      - 5672:5672
-      - 15672:15672
-    environment:
-      - TZ=Asia/Shanghai
-      - RABBITMQ_DEFAULT_USER=${DOCKER_USER}
-      - RABBITMQ_DEFAULT_PASS=${DOCKER_USER}
-    volumes:
-      - ${DOCKER_DATA_DIR}/rabbitmq:/var/lib/rabbitmq
-    network:
-      - local-test
+  # rabbit:
+    # image: rabbitmq:3.9.11-management
+    # container_name: rabbitmq
+    # ports:
+      # - 5672:5672
+      # - 15672:15672
+    # environment:
+      # - TZ=Asia/Shanghai
+      # - RABBITMQ_DEFAULT_USER=${DOCKER_USER}
+      # - RABBITMQ_DEFAULT_PASS=${DOCKER_USER}
+    # volumes:
+      # - ${DOCKER_DATA_DIR}/rabbitmq:/var/lib/rabbitmq
+    # networks:
+      # - local-test
   jaeger:
     restart: always
     image: jaegertracing/all-in-one:latest
@@ -146,4 +146,4 @@ services:
 networks:
   local-test:
     name: local-test
-    driver: brige
+    driver: bridge
