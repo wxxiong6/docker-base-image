@@ -1,31 +1,26 @@
-# docker-base-image
-
-制作一些常用的基础镜像,镜像使用官方镜像制作而成。
-
-
-
-支持多版本php切换，支持版有（.1.30、.2.5、7.4.14、8.0 ）。
-支持多版本mysql切换，支持版有（5.7、8.0 ）。
-
+# docker-base-image这个
+旨在为使用 Docker 的用户提供一个标准化、可靠、可扩展的基础镜像。这个镜像包含了常见项目的运行时环境，
+例如 Kafka、Redis、MySQL、Node.js 等，方便用户在构建自己的应用镜像时进行调试和测试。
+方便用户在不同的项目中共享和复用。
 
 ##  包含镜像
 - [aliyun-oss](https://github.com/wxxiong6/docker-base-image/blob/master/aliyun-oss/README.md)
 - [clickhouse](https://github.com/wxxiong6/docker-base-image/blob/master/clickhouse/README.md)
-- [nginx-latest](https://github.com/wxxiong6/docker-base-image/blob/master/nginx/README.md)
+- [nginx](https://github.com/wxxiong6/docker-base-image/blob/master/nginx/README.md)
 - [kong](https://github.com/wxxiong6/docker-base-image/blob/master/kong/README.md)
 - [konga](https://github.com/wxxiong6/docker-base-image/blob/master/konga/README.md)
 - [kustomize](https://github.com/wxxiong6/docker-base-image/blob/master/kubectl-kustomize/README.md)
-- [mongdb](https://github.com/wxxiong6/docker-base-image/blob/master/mongdb/README.md)
+- [MongoDB](https://github.com/wxxiong6/docker-base-image/blob/master/MongoDB/README.md)
 - [node](https://github.com/wxxiong6/docker-base-image/blob/master/node16/README.md)
 - [postgresSQL](https://github.com/wxxiong6/docker-base-image/blob/master/postgresSQL/README.md)
 - [jaeger]()
 - [kafka]()
 - [dtm]()
-- [php-7.4.14](https://github.com/wxxiong6/docker-base-image/blob/master/php74/README.md) 
-- [mysql-5.7](https://github.com/wxxiong6/docker-base-image/blob/master/mysql57/README.md) 
-- [mysql-8.0](https://github.com/wxxiong6/docker-base-image/blob/master/mysql80/README.md) 
-- [redis-5.0](https://github.com/wxxiong6/docker-base-image/blob/master/redis50/README.md) 
-- [redis-7.0](https://github.com/wxxiong6/docker-base-image/blob/master/redis70/README.md) 
+- [PHP-7.4.14](https://github.com/wxxiong6/docker-base-image/blob/master/php74/README.md)
+- [MySQL-5.7](https://github.com/wxxiong6/docker-base-image/blob/master/mysql57/README.md)
+- [PHP-8](https://github.com/wxxiong6/docker-base-image/blob/master/php80/README.md)
+- [MySQL-8.0](https://github.com/wxxiong6/docker-base-image/blob/master/mysql80/README.md)
+- [Redis-7.0](https://github.com/wxxiong6/docker-base-image/blob/master/redis70/README.md)
 - [rabbitMQ](https://github.com/wxxiong6/docker-base-image/blob/master/rabbitMQ/README.md) 
 
 
