@@ -9,14 +9,23 @@
 
 
 ##  包含镜像
-
-- [nginx-1.10](https://github.com/wxxiong6/docker-base-image/blob/master/nginx/README.md)
+- [aliyun-oss](https://github.com/wxxiong6/docker-base-image/blob/master/aliyun-oss/README.md)
+- [clickhouse](https://github.com/wxxiong6/docker-base-image/blob/master/clickhouse/README.md)
+- [nginx-latest](https://github.com/wxxiong6/docker-base-image/blob/master/nginx/README.md)
+- [kong](https://github.com/wxxiong6/docker-base-image/blob/master/kong/README.md)
+- [konga](https://github.com/wxxiong6/docker-base-image/blob/master/konga/README.md)
+- [kustomize](https://github.com/wxxiong6/docker-base-image/blob/master/kubectl-kustomize/README.md)
+- [mongdb](https://github.com/wxxiong6/docker-base-image/blob/master/mongdb/README.md)
+- [node](https://github.com/wxxiong6/docker-base-image/blob/master/node16/README.md)
+- [postgresSQL](https://github.com/wxxiong6/docker-base-image/blob/master/postgresSQL/README.md)
+- [jaeger]()
+- [kafka]()
+- [dtm]()
 - [php-7.4.14](https://github.com/wxxiong6/docker-base-image/blob/master/php74/README.md) 
 - [mysql-5.7](https://github.com/wxxiong6/docker-base-image/blob/master/mysql57/README.md) 
 - [mysql-8.0](https://github.com/wxxiong6/docker-base-image/blob/master/mysql80/README.md) 
 - [redis-5.0](https://github.com/wxxiong6/docker-base-image/blob/master/redis50/README.md) 
 - [redis-7.0](https://github.com/wxxiong6/docker-base-image/blob/master/redis70/README.md) 
-- [clickhouse-22](https://github.com/wxxiong6/docker-base-image/blob/master/clickhouse-server22_3/README.md) 
 - [rabbitMQ](https://github.com/wxxiong6/docker-base-image/blob/master/rabbitMQ/README.md) 
 
 
