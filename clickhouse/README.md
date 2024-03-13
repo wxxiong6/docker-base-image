@@ -16,3 +16,7 @@
 ./run.sh
 ```
 
+默认
+数据库： test
+用户名： clickhouse
+密码： 123456

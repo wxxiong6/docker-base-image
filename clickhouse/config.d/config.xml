@@ -1,0 +1,12 @@
+<!-- config.xml -->
+<clickhouse>
+    <config_a>
+        <setting_1>1</setting_1>
+    </config_a>
+    <config_b>
+        <setting_2>2</setting_2>
+    </config_b>
+    <config_c>
+        <setting_3>3</setting_3>
+    </config_c>
+</clickhouse>
