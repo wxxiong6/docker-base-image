@@ -27,10 +27,14 @@ func main() {
 	filename := flag.String("filename", fmt.Sprintf("%s/keys.txt", os.Getenv("HOME")), "output filename")
 	interval := flag.Duration("interval", time.Millisecond*50, "interval between refresh Millisecond")
 	expire := flag.Duration("expire", 10*time.Minute, "default set ttl")
-	matchKey := flag.String("match", "disguise_statu*", "redis match key")
+	matchKey := flag.String("match", "*", "redis match key")
 	flag.Parse()
 	if *redisUrl == "" {
-		flag.Usage()
+		os.Exit(1)
+	}
+
+        if int64(*interval) < time.Now().UnixMilli()+50 && int64(*interval) > time.Now().UnixMilli()+100 {
+		fmt.Println("interval too big, 50 - 100 Millisecond")
 		os.Exit(1)
 	}
 
